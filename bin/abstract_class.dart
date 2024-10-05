@@ -9,8 +9,7 @@ void main(List<String> arguments) {
   // figure2.countArea();
   // Cat cat1 =Cat(4,'COLOR White')..pokaz();
   // Cow cowS = Cow(4, 'КОПЫТА', 'РОГА')..pokaz();
-  Aspirant aspi = Aspirant('Oleg', 'Olegovich', 'IB', 4.0, 'NATURE')..pokaz();
-  aspi.pokaz();
+  Aspirant aspi = Aspirant('Oleg', 'Olegovich', 'IB', 5.0,'научная работа')..pokaz();
 }
 
 abstract class Shape {
@@ -87,7 +86,12 @@ abstract class Student {
   String group;
   double averageMark;
 
-  Student(this.firstName, this.lastName, this.group, this.averageMark);
+  Student(
+    this.firstName,
+    this.lastName,
+    this.group,
+    this.averageMark,
+  );
 
   double stipendiya() {
     return averageMark == 5 ? 20000 : 0;
@@ -95,19 +99,23 @@ abstract class Student {
 }
 
 class Aspirant extends Student {
-  String SciencingWork;
+  String sciencingWork;
 
-  Aspirant(String firstName, String lastName, String group, double averageMark, this.SciencingWork)
+  Aspirant(String firstName, String lastName, String group, double averageMark,
+      this.sciencingWork)
       : super(firstName, lastName, group, averageMark);
 
   @override
   double stipendiya() {
-    double mark;
-     mark = averageMark == 5 ? 40000 : 18000;
-     return mark;
+    double mark = 0;
+    if (sciencingWork != ' ') {
+      return mark += averageMark == 5 ? 40000 : 18000;
+    }else{
+      return averageMark == 5 ? 20000 : 0;
+    }
   }
 
-  void pokaz(){
-    print('$firstName , $lastName, $group, $averageMark, $SciencingWork, ${stipendiya()}');
+  void pokaz() {
+    print('$firstName , $lastName, $group, $averageMark, $sciencingWork, ${stipendiya()}');
   }
 }
