@@ -7,17 +7,20 @@ void main(List<String> arguments) {
   // figure1.countArea();
   // Pryamougol figure2 = Pryamougol(4, 6);
   // figure2.countArea();
-  Cat cat1 =Cat(4,'COLOR White')..pokaz();
-  Cow cowS = Cow(4, 'КОПЫТА', 'РОГА')..pokaz();
+  // Cat cat1 =Cat(4,'COLOR White')..pokaz();
+  // Cow cowS = Cow(4, 'КОПЫТА', 'РОГА')..pokaz();
+  Aspirant aspi = Aspirant('Oleg', 'Olegovich', 'IB', 4.0, 'NATURE')..pokaz();
+  aspi.pokaz();
+  
 }
 
-abstract class Shape{
-  void countArea(){
+abstract class Shape {
+  void countArea() {
     print('nothing');
   }
 }
 
-class Square extends Shape{
+class Square extends Shape {
   int side;
 
   Square(this.side);
@@ -28,7 +31,7 @@ class Square extends Shape{
   }
 }
 
-class Pryamougol extends Shape{
+class Pryamougol extends Shape {
   int side;
   int longside;
 
@@ -36,37 +39,36 @@ class Pryamougol extends Shape{
 
   @override
   void countArea() {
-    print(side*longside);
+    print(side * longside);
   }
 }
 
-abstract class Animals{
-  int legs=0;
-  
+abstract class Animals {
+  int legs = 0;
 
-  void voice(){
+  void voice() {
     print('nothing');
   }
 }
 
-class Cat extends Animals{
+class Cat extends Animals {
   @override
   int legs;
   String color;
 
   Cat(this.legs, this.color);
 
- @override
+  @override
   void voice() {
     print('mya-mya');
   }
 
-  void pokaz(){
+  void pokaz() {
     print('количество ног: $legs,отличительная черта: $color');
   }
 }
 
-class Cow extends Animals{
+class Cow extends Animals {
   @override
   int legs;
   String roga;
@@ -74,7 +76,39 @@ class Cow extends Animals{
 
   Cow(this.legs, this.legsType, this.roga);
 
+  void pokaz() {
+    print(
+        'количество ног: $legs,отличительная черта: $roga, тип ног: $legsType');
+  }
+}
+
+abstract class Student {
+  String firstName;
+  String lastName;
+  String group;
+  double averageMark;
+
+  Student(this.firstName, this.lastName, this.group, this.averageMark);
+
+  double stipendiya() {
+    return averageMark == 5 ? 20000 : 0;
+  }
+}
+
+class Aspirant extends Student {
+  String SciencingWork;
+
+  Aspirant(String firstName, String lastName, String group, double averageMark, this.SciencingWork)
+      : super(firstName, lastName, group, averageMark);
+
+  @override
+  double stipendiya() {
+    double mark;
+     mark = averageMark == 5 ? 40000 : 18000;
+     return mark;
+  }
+
   void pokaz(){
-    print('количество ног: $legs,отличительная черта: $roga, тип ног: $legsType');
+    print('$firstName , $lastName, $group, $averageMark, $SciencingWork, ${stipendiya()}');
   }
 }
