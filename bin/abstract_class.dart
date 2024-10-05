@@ -11,7 +11,6 @@ void main(List<String> arguments) {
   // Cow cowS = Cow(4, 'КОПЫТА', 'РОГА')..pokaz();
   Aspirant aspi = Aspirant('Oleg', 'Olegovich', 'IB', 4.0, 'NATURE')..pokaz();
   aspi.pokaz();
-  
 }
 
 abstract class Shape {
